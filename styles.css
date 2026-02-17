@@ -1,0 +1,214 @@
+/* ---------------------------------------------------------
+   LAYOUT GENERAL
+--------------------------------------------------------- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* La página NO hace scroll */
+    font-family: Arial, sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL: layout vertical */
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* ocupa toda la pantalla */
+}
+
+/* TÍTULO SIEMPRE VISIBLE */
+#app h1 {
+    margin: 0;
+    padding: 12px;
+    font-size: 20px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    flex: 0 0 auto; /* altura fija */
+}
+
+/* GRID OCUPA TODO EL ESPACIO RESTANTE */
+#tabla-fichas {
+    flex: 1 1 auto; /* ocupa el resto del espacio */
+    overflow: auto; /* scroll horizontal y vertical SIEMPRE visibles */
+    width: 100%;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 600px) {
+    #app h1 {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+
+/* ---------------------------------------------------------
+   ANIMACIÓN DE ERROR (si la necesitas en el futuro)
+--------------------------------------------------------- */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+/* ---------------------------------------------------------
+   PANEL DE ERRORES
+--------------------------------------------------------- */
+#errores-tabla {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #b30000;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+/* ---------------------------------------------------------
+   AJUSTES VISUALES DE TABULATOR
+--------------------------------------------------------- */
+.tabulator-cell {
+    position: relative;
+    font-size: 14px;
+}
+
+.tabulator-row {
+    font-size: 14px;
+}
+
+#tabla-fichas .tabulator-row {
+    background-color: inherit !important;
+}
+
+
+/* Burbuja de error (si la usas en el futuro) */
+.error-bubble {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    background: #b30000;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Tamaño del texto en los encabezados del Grid */
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Texto más pequeño en las filas */
+.tabulator .tabulator-row .tabulator-cell {
+    font-size: 12px;   /* Puedes bajar a 12px si lo quieres más compacto */
+    padding: 4px 6px;  /* Reduce la altura visual */
+}
+
+
+/* Altura más compacta */
+.tabulator .tabulator-row {
+    min-height: 16px;   /* Ajusta a 24px si quieres aún más compacto */
+}
+
+/* Checkbox de selección más pequeño */
+.tabulator .tabulator-row .tabulator-cell .tabulator-row-selector {
+    transform: scale(0.8);      /* Reduce tamaño */
+    margin: 0;                  /* Quita espacio extra */
+    padding: 0;
+}
+
+/* Botón de borrar más compacto */
+.tabulator .tabulator-row .tabulator-cell .tabulator-button {
+    padding: 2px 4px !important;   /* Reduce tamaño del botón */
+    font-size: 11px !important;    /* Texto más pequeño */
+    line-height: 14px !important;
+    min-width: 20px !important;    /* Evita que se haga enorme */
+}
+
+/* Columna borrar más estrecha */
+.tabulator .tabulator-cell[tabulator-field="_delete"] {
+    width: 40px !important;
+    max-width: 40px !important;
+    text-align: center;
+}
+
+/* Encabezados del Grid en negro */
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+    color: #000 !important;
+    font-weight: 700 !important;   /* Bold real */
+}
+
+/* Filtros del encabezado ultra compactos */
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+    font-size: 11px !important;      /* Texto más pequeño */
+    padding: 1px 3px !important;     /* Menos espacio interno */
+    height: 20px !important;         /* Más bajos */
+    line-height: 18px !important;
+    border-radius: 3px !important;   /* Más discretos */
+}
+
+/* Ajuste del contenedor del filtro para que no deje espacio extra */
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+    white-space: normal !important;   /* Permite múltiples líneas */
+    line-height: 1.2;                 /* Más compacto */
+    text-align: center;               /* Opcional: centrado */
+}
+
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+#panel-reportes {
+    padding: 10px;
+    background: #f7faff;
+    border: 1px solid #ccd9ff;
+    margin-bottom: 5px;
+    margin-top: 5px; /* ⭐ Esto lo separa del panel anterior */
+}
+
+#panelRepeticion {
+    padding: 10px;
+    background: #f7faff;
+    border: 1px solid #ccd9ff;
+    margin-bottom: 5px;
+    margin-top: 5px; /* ⭐ Esto lo separa del panel anterior */
+}
+
+
+#panel-analisis {
+    padding: 10px;
+    background: #f7faff;
+    border: 1px solid #ccd9ff;
+    margin-bottom: 5px;
+    margin-top: 5px; /* ⭐ Esto lo separa del panel anterior */
+}
+
+#panel-usuario {
+    padding: 10px;
+    background: #f7faff;
+    border: 1px solid #ccd9ff;
+    margin-bottom: 5px;
+    margin-top: 5px; /* ⭐ Esto lo separa del panel anterior */
+}
+
+#panel-boton {
+    padding: 10px;
+    background: #f7faff;
+    border: 1px solid #ccd9ff;
+    margin-bottom: 5px;
+    margin-top: 5px; /* ⭐ Esto lo separa del panel anterior */
+    /* width: auto;         ⭐ evita que se estire */
+}
+
+

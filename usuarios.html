@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios</title>
+
+    <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+
+    <script src="permisos.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        #usuarios-table {
+            margin-top: 20px;
+        }
+
+        
+        .barra-superior {
+    display: flex;
+    justify-content: space-between;   /* ⭐ uno a la izquierda, otro a la derecha */
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.btn {
+    padding: 10px 20px;
+    height: 42px;        /* ⭐ altura uniforme */
+    line-height: 22px;   /* ⭐ centra el texto verticalmente */
+    font-size: 16px;
+    background: #2a4fa3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<h2>Gestión de Usuarios</h2>
+
+
+<div class="barra-superior">
+
+    <button class="btn" onclick="abrirCrearUsuario()">Crear Usuario</button>
+
+    <button id="btn-volver" class="btn" onclick="location.href='index.html'">
+        ⬅ Regresar
+    </button>
+</div>
+
+
+<div id="usuarios-table"></div>
+
+<script src="usuarios.js"></script>
+
+</body>
+</html>

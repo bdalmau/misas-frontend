@@ -1,0 +1,113 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Misas Santuario</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tabulator CSS (versión corregida 5.6.1) -->
+    <link href="https://unpkg.com/tabulator-tables@5.6.1/dist/css/tabulator_modern.min.css" rel="stylesheet">
+
+    <!-- Tabulator principal -->
+    <script src="https://unpkg.com/tabulator-tables@5.6.1/dist/js/tabulator.min.js"></script>
+
+    <!-- Módulo de validación -->
+    <script src="https://unpkg.com/tabulator-tables@5.6.1/dist/js/modules/validate.js"></script>
+
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 style="text-align:center;">Misas Santuario</h1>
+
+<div id="panel-contenedor" style="display:flex; gap:5px; margin-bottom:10px;">
+
+    
+    <div id="panel-usuario" style="flex:1; padding: 10px; background: #eef3ff; border: 1px solid #ccd9ff;">
+        <label><strong>Usuarios:</strong></label>
+        <button id="btn-usuarios" onclick="location.href='usuarios.html'">Usuarios</button>
+    </div>  
+
+    <div id="panel-analisis" style="flex:1; padding: 10px; background: #eef3ff; border: 1px solid #ccd9ff;">
+        <label><strong>Análisis:</strong></label>
+        <button id="btn-analisis">Análisis</button>
+    </div>
+
+    <div id="panel-boton" style="flex:2; padding: 10px; background: #eef3ff; border: 1px solid #ccd9ff;">
+        <label><strong>Misas:</strong></label>
+        <button id="btn-nueva-ficha" style="margin-left: 10px;">Crear registro</button>
+        <button id="btn-borrar-seleccion">Borrar selección</button>
+    </div>
+
+
+    <div id="panelRepeticion" style="flex:2; padding: 10px; background: #eef3ff; border: 1px solid #ccd9ff;">
+        <label><strong>Repeticiones:</strong></label>
+        <select id="tipoRepeticionGlobal">
+            <option value="">-- Seleccionar --</option>
+            <option value="dias consecutivos">Días consecutivos</option>
+            <option value="semana consecutiva">Semana consecutiva</option>
+            <option value="mes consecutivo">Mes consecutivo</option>
+        </select>
+    </div>
+
+
+    <div id="panel-reportes" style="flex:2; padding: 10px; background: #eef3ff; border: 1px solid #ccd9ff;">
+        <label><strong>Reportes:</strong></label>
+        <select id="report-type">
+            <option value="">Seleccionar</option>
+            <option value="G">Tipo G (Gregorianas)</option>
+            <option value="M">Tipo M (Mensuales)</option>
+            <option value="L">Tipo L (Listado)</option>
+            <option value="F">Tipo F (Fecha Fija)</option>
+            <option value="N">Tipo N (Nombrar)</option>
+        </select> 
+        <button id="btn-generar-reporte" style="margin-left: 10px;">Generar</button>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+    <div id="tabla-fichas"></div>
+
+    <!-- Panel de errores -->
+    <div id="errores-tabla"></div>
+  </div>
+
+  <!-- Lógica de la aplicación -->
+  <script src="app.js"></script>
+  <script src="reportes.js"></script>
+
+<script>
+    if (!localStorage.getItem("token")) {
+        window.location.href = "login.html";
+    }
+</script>
+
+<script src="permisos.js"></script>
+<script>
+    protegerBotones();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
