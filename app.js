@@ -59,6 +59,7 @@ function flatpickrEditor(cell, onRendered, success, cancel) {
 
     onRendered(() => {
         flatpickr(input, {
+            locale: "es",
             dateFormat: "Y-m-d",
             defaultDate: cell.getValue(),
             allowInput: true,
@@ -81,6 +82,7 @@ function flatpickrHeaderFilter(cell, onRendered, success, cancel) {
 
     onRendered(() => {
         flatpickr(input, {
+            locale: "es",
             dateFormat: "Y-m-d",
             allowInput: true,
             onChange: (_, dateStr) => success(dateStr)
