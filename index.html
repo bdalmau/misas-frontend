@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+<script>
+    if (!sessionStorage.getItem("loggedIn")) {
+        window.location.href = "login.html";
+    }
+</script>
+
     <meta charset="UTF-8">
     <link rel="manifest" href="manifest.json">
     <title>Misas Santuario</title>

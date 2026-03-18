@@ -1,28 +1,17 @@
-self.addEventListener("install", e => {
-    e.waitUntil(
-        caches.open("misa-cache").then(cache => {
-            return cache.addAll([
-                "/",
-                "/index.html",
-                "/styles.css",
-                "/app.js"
-            ]);
-        })
-    );
+// NO cacheamos nada relacionado con login o index
+self.addEventListener("install", event => {
+    self.skipWaiting();
 });
 
-self.addEventListener("fetch", e => {
-    e.respondWith(
-        caches.match(e.request).then(resp => resp || fetch(e.request))
-    );
+// Siempre cargar desde la red, nunca desde cache
+self.addEventListener("fetch", event => {
+    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
 });
 
-
-
-self.addEventListener('activate', event => {
+// Al activar, borrar cualquier cache viejo
+self.addEventListener("activate", event => {
     event.waitUntil(
-        caches.keys().then(keys => {
-            return Promise.all(keys.map(key => caches.delete(key)));
-        })
+        caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key))))
     );
+    self.clients.claim();
 });
