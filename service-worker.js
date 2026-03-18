@@ -17,9 +17,12 @@ self.addEventListener("fetch", e => {
     );
 });
 
+
+
 self.addEventListener('activate', event => {
-    // Borrar todo el cache para forzar login siempre
-    caches.keys().then(keys => {
-        return Promise.all(keys.map(key => caches.delete(key)));
-    });
+    event.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(keys.map(key => caches.delete(key)));
+        })
+    );
 });

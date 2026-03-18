@@ -25,5 +25,6 @@ async function login() {
     localStorage.setItem("usuario", data.usuario);
 
     // Redirigir al dashboard
+    sessionStorage.setItem("loggedIn", "true");
     window.location.href = "index.html";
 }
