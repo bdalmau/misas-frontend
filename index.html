@@ -27,7 +27,14 @@
     <!-- Estilos propios -->
     <link rel="stylesheet" href="styles.css">
 
-   
+   <script>
+    // Forzar que SIEMPRE se borre la sesión al abrir el PWA
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Redirigir siempre al login
+    window.location.href = "login.html";
+    </script>
 
 </head>
 
