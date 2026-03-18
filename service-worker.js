@@ -16,3 +16,10 @@ self.addEventListener("fetch", e => {
         caches.match(e.request).then(resp => resp || fetch(e.request))
     );
 });
+
+self.addEventListener('activate', event => {
+    // Borrar todo el cache para forzar login siempre
+    caches.keys().then(keys => {
+        return Promise.all(keys.map(key => caches.delete(key)));
+    });
+});
