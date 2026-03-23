@@ -125,5 +125,14 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+
+<script>
+// Mantener backend despierto (Render)
+setInterval(() => {
+    fetch("https://misas-backend-nfoz.onrender.com/ping")
+        .catch(() => {});
+}, 5 * 60 * 1000); // cada 5 minutos
+</script>
+
 </body>
 </html>
